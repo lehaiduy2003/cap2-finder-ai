@@ -1,0 +1,15 @@
+1. cài đặt các thư viện file requirement bằng câu lệnh:
+    pip install -r requirements.txt
+2. mở cmd và chạy câu lệnh:
+    uvicorn app.main:app --reload
+3. test postman bằng curl (dán vào postman):
+    curl --location 'http://localhost:8000/recommend?user_id=14'
+
+    or
+
+    curl --location 'http://localhost:8000/recommend?user_id=14&top_n=1'
+
+==== Giải thích
+1. sử dụng FastAPI
+2. AI model: paraphrase-MiniLM-L12-v2 (từ sentence_transformers)
+3. Cache embedding để tăng tốc

@@ -1,7 +1,19 @@
-fastapi
-uvicorn
-pandas
-sentence-transformers
-scikit-learn
-mysql-connector-python
-python-dotenv
+# wheel files for torch CPU-only
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+fastapi==0.117.1
+uvicorn==0.30.6
+
+pandas==2.2.2
+scikit-learn==1.4.2
+
+sentence-transformers==2.7.0
+transformers==4.44.2
+
+# Torch CPU-only
+torch==2.4.1+cpu
+
+# DB
+mysql-connector-python==9.0.0
+
+python-dotenv==1.0.1

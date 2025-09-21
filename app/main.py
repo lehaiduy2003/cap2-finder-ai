@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI(title="Roommate AI Recommender")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # hoặc ["*"] cho dev tạm thời
+    allow_origins=["http://localhost:5173", "https://cap2-fe.vercel.app"],  # hoặc ["*"] cho dev tạm thời
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

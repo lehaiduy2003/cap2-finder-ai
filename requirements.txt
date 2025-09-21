@@ -4,3 +4,4 @@ pandas
 sentence-transformers
 scikit-learn
 mysql-connector-python
+python-dotenv

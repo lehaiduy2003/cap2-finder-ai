@@ -4,20 +4,6 @@ from .recommender import recommend
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Roommate AI Recommender")
-origins = [
-    "http://localhost:5173",
-    "https://cap2-fe.vercel.app",
-    "https://*.vercel.app",
-    "https://cap2-fe-*.vercel.app"
-]
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
 
 @app.get("/recommend")
 def recommend_users(user_id: int = Query(...), top_n: int = Query(5)) -> List[dict]:
@@ -25,3 +11,18 @@ def recommend_users(user_id: int = Query(...), top_n: int = Query(5)) -> List[di
     if not result:
         raise HTTPException(status_code=404, detail="Không tìm thấy user hoặc không có kết quả.")
     return result
+
+
+allowed_origins = [
+    "http://localhost:5173",
+    "https://cap2-fe.vercel.app"
+]
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=allowed_origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)

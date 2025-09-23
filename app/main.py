@@ -2,10 +2,17 @@ from fastapi import FastAPI, HTTPException, Query
 from typing import List
 from .recommender import recommend
 from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI(title="Roommate AI Recommender")
+origins = [
+    "http://localhost:5173",
+    "https://cap2-fe.vercel.app",
+    "https://*.vercel.app",
+    "https://cap2-fe-*.vercel.app"
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "https://cap2-fe.vercel.app"],  # hoặc ["*"] cho dev tạm thời
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

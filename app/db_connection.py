@@ -13,7 +13,7 @@ def get_db_connection():
             port=int(os.getenv('DB_PORT', '3306')),
             database=os.getenv('DB_NAME', 'roomiego'),
             user=os.getenv('DB_USERNAME', 'root'),
-            password=os.getenv('DB_PASSWORD', 'mysql')
+            password=os.getenv('DB_PASSWORD', 'root')
         )
         return connection
     except Error as e:

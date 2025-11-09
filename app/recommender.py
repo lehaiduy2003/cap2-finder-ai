@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from .embedding_cache import get_embedding
-from .db_connection import get_db_connection
+from .db_connection import get_db_engine
 
 
 def combine_features(row):
@@ -13,13 +13,14 @@ def combine_features(row):
 
 
 def get_roommates():
-    db = get_db_connection()
-    if db is None:
+    engine = get_db_engine()
+    if engine is None:
         return pd.DataFrame()
 
     query = "SELECT * FROM roommates"
-    df = pd.read_sql(query, con=db)
-    db.close()
+    # Use SQLAlchemy engine directly - pandas officially supports this
+    df = pd.read_sql(query, con=engine)
+    # No need to close engine - SQLAlchemy manages connection pooling
     df['combined'] = df.apply(combine_features, axis=1)
     return df
 

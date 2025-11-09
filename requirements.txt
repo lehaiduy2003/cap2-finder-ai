@@ -15,5 +15,8 @@ torch==2.4.1+cpu
 
 # DB
 mysql-connector-python==9.0.0
+sqlalchemy==2.0.23
+pymysql==1.1.0
+cryptography==41.0.7
 
 python-dotenv==1.0.1
